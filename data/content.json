@@ -1,0 +1,74 @@
+{
+  "hero": {
+    "kicker": "Video Editor — Manila / Remote",
+    "tagline": "Cutting films, campaigns and music videos with rhythm, restraint and an obsession for the frame that matters."
+  },
+  "about": {
+    "bio": "23-year-old editor who started cutting in 2021 and never stopped. A year of commercial tempo at **Social Avenue**, now also building **FloorIt** as co-founder — splitting time between client timelines and my own.",
+    "subBio": "The job, as I see it: protect the story, respect the rhythm, and cut everything that doesn't earn its frames.",
+    "facts": [
+      {
+        "label": "Age",
+        "value": "23"
+      },
+      {
+        "label": "Cutting since",
+        "value": "2021"
+      },
+      {
+        "label": "Social Avenue",
+        "value": "Editor — 1 yr"
+      },
+      {
+        "label": "FloorIt",
+        "value": "Co-Founder"
+      },
+      {
+        "label": "Status",
+        "value": "Booking"
+      }
+    ]
+  },
+  "capabilities": [
+    {
+      "track": "V1",
+      "title": "Editing",
+      "body": "Narrative, commercial and music video editing — structure, pacing and rhythm that serve the story, not the timeline."
+    },
+    {
+      "track": "V2",
+      "title": "Color",
+      "body": "Grades built in DaVinci Resolve, from clean broadcast-safe looks to heavy filmic treatments that hold up on every screen."
+    },
+    {
+      "track": "A1",
+      "title": "Motion & Sound",
+      "body": "Title design, speed ramps and seamless VFX in After Effects, with sound design that makes every cut land harder."
+    }
+  ],
+  "contact": {
+    "email": "devera.roby2304@gmail.com",
+    "intro": "Booking edits, grades and full post-production. Tell me about the project, the deadline, and what the footage looks like.",
+    "socials": [
+      {
+        "label": "Instagram",
+        "href": "https://instagram.com/"
+      },
+      {
+        "label": "YouTube",
+        "href": "https://youtube.com/"
+      },
+      {
+        "label": "Vimeo",
+        "href": "https://vimeo.com/"
+      },
+      {
+        "label": "LinkedIn",
+        "href": "https://linkedin.com/"
+      }
+    ]
+  },
+  "footer": {
+    "kicker": "Let's cut something"
+  }
+}

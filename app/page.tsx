@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Hero from "@/components/Hero";
 import ProjectGrid from "@/components/ProjectGrid";
+import About from "@/components/About";
 import Capabilities from "@/components/Capabilities";
 import RulerMarquee from "@/components/editor/RulerMarquee";
 import { featuredProjects } from "@/data/projects";
@@ -35,7 +36,19 @@ export default function Home() {
       <section className="border-t border-line">
         <div className="mx-auto max-w-6xl px-6 py-24 md:py-36">
           <p className="text-xs uppercase tracking-[0.3em] text-muted">
-            Seq 02 — Tracks
+            Seq 02 — Source
+          </p>
+          <h2 className="mb-14 mt-3 font-display text-4xl font-bold tracking-tight md:mb-20 md:text-6xl">
+            About<span className="text-accent">.</span>
+          </h2>
+          <About />
+        </div>
+      </section>
+
+      <section className="border-t border-line">
+        <div className="mx-auto max-w-6xl px-6 py-24 md:py-36">
+          <p className="text-xs uppercase tracking-[0.3em] text-muted">
+            Seq 03 — Tracks
           </p>
           <h2 className="mb-14 mt-3 font-display text-4xl font-bold tracking-tight md:mb-20 md:text-6xl">
             What I do<span className="text-accent">.</span>
@@ -47,7 +60,7 @@ export default function Home() {
       <section className="border-t border-line">
         <div className="mx-auto max-w-6xl px-6 py-24 text-center md:py-36">
           <p className="text-sm uppercase tracking-[0.3em] text-muted">
-            Seq 03 — Export · Currently booking
+            Seq 04 — Export · Currently booking
           </p>
           <h2 className="mx-auto mt-6 max-w-3xl font-display text-4xl font-bold leading-tight tracking-tight md:text-6xl">
             Have a story that needs cutting

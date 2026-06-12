@@ -1,11 +1,7 @@
 import Link from "next/link";
+import { content } from "@/lib/content";
 
-const socials = [
-  { label: "Instagram", href: "https://instagram.com/" },
-  { label: "YouTube", href: "https://youtube.com/" },
-  { label: "Vimeo", href: "https://vimeo.com/" },
-  { label: "LinkedIn", href: "https://linkedin.com/" },
-];
+const socials = content.contact.socials;
 
 export default function Footer() {
   return (
@@ -13,13 +9,13 @@ export default function Footer() {
       <div className="mx-auto flex max-w-6xl flex-col gap-10 px-6 py-16 md:flex-row md:items-end md:justify-between">
         <div>
           <p className="text-sm uppercase tracking-[0.3em] text-muted">
-            Let&apos;s cut something
+            {content.footer.kicker}
           </p>
           <a
-            href="mailto:devera.roby2304@gmail.com"
+            href={`mailto:${content.contact.email}`}
             className="mt-3 inline-block font-display text-2xl font-bold tracking-tight transition-colors hover:text-accent md:text-4xl"
           >
-            devera.roby2304@gmail.com
+            {content.contact.email}
           </a>
         </div>
 

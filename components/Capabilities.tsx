@@ -2,24 +2,9 @@
 
 import { useRef } from "react";
 import { gsap, useGSAP, MOTION_OK } from "@/lib/gsap";
+import { content } from "@/lib/content";
 
-const capabilities = [
-  {
-    track: "V1",
-    title: "Editing",
-    body: "Narrative, commercial and music video editing — structure, pacing and rhythm that serve the story, not the timeline.",
-  },
-  {
-    track: "V2",
-    title: "Color",
-    body: "Grades built in DaVinci Resolve, from clean broadcast-safe looks to heavy filmic treatments that hold up on every screen.",
-  },
-  {
-    track: "A1",
-    title: "Motion & Sound",
-    body: "Title design, speed ramps and seamless VFX in After Effects, with sound design that makes every cut land harder.",
-  },
-];
+const capabilities = content.capabilities;
 
 export default function Capabilities() {
   const scope = useRef<HTMLDivElement>(null);

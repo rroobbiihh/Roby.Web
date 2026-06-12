@@ -41,6 +41,7 @@ components/
     ViewfinderOverlay.tsx    REC tally, corner brackets, fps slate
     ScrollPlayhead.tsx       fixed timeline bar; playhead = scroll progress
     RulerMarquee.tsx         scrolling EDIT/COLOR/MOTION ticker
+  About.tsx                Bio + clip-properties fact panel (edit facts here)
   ProjectGrid.tsx          Scroll-triggered grid entrance
   ProjectCard.tsx          Clip-style card: scrub line, in/out marks, TC badge
   VideoEmbed.tsx           YouTube / Vimeo / self-hosted player
@@ -55,9 +56,36 @@ public/
   videos/                  Drop self-hosted MP4s + hover previews here
 ```
 
+## Content portal (hidden route)
+
+**`/studio`** — a one-page manager for all site content. Not linked from
+anywhere, `noindex`ed, and optionally gated by `NEXT_PUBLIC_STUDIO_KEY`.
+
+It edits two files:
+
+- `data/content.json` — hero text, about bio + fact rows, capabilities,
+  contact email/intro, social links, footer kicker
+- `data/projects.json` — the full project list (add / delete / reorder /
+  edit every field, mark featured)
+
+How saving works:
+
+| Where you're running           | What Save does                                        |
+| ------------------------------ | ----------------------------------------------------- |
+| Locally (`npm run dev`)        | Writes the JSON files directly; site hot-reloads      |
+| Self-hosted (`STUDIO_WRITE=true`) | Same as dev — files written on the server          |
+| Vercel / serverless            | Save is rejected — use the **Download** buttons, drop the files into `data/`, commit, redeploy |
+
+Typical workflow for the page manager: run the site locally, open
+`localhost:3000/studio`, edit, Save, review the site, then commit and push.
+
+In bio/tagline fields, wrap words in `**double asterisks**` to render them
+in the terracotta accent color.
+
 ## Adding / editing projects
 
-Everything is one typed array: [data/projects.ts](data/projects.ts).
+Project content lives in [data/projects.json](data/projects.json) (editable
+via `/studio` or by hand). Types and helpers: [data/projects.ts](data/projects.ts).
 
 ```ts
 {
@@ -142,6 +170,8 @@ Copy `.env.example` to `.env.local`:
 | -------------------------- | ---------------------------------------- |
 | `NEXT_PUBLIC_SITE_URL`     | Canonical URL for SEO/sitemap/OG         |
 | `NEXT_PUBLIC_FORMSPREE_ID` | Enables the contact form's POST mode     |
+| `NEXT_PUBLIC_STUDIO_KEY`   | Optional access key for `/studio`        |
+| `STUDIO_WRITE`             | `true` lets `/studio` write files in prod (self-hosted only) |
 
 ## Deploying
 

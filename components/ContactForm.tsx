@@ -1,9 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import { content } from "@/lib/content";
 
 const FORMSPREE_ID = process.env.NEXT_PUBLIC_FORMSPREE_ID;
-const CONTACT_EMAIL = "devera.roby2304@gmail.com";
+const CONTACT_EMAIL = content.contact.email;
 
 type Status = "idle" | "sending" | "sent" | "error";
 

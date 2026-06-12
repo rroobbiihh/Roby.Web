@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ContactForm from "@/components/ContactForm";
+import { content } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -7,12 +8,7 @@ export const metadata: Metadata = {
     "Get in touch with Roby De Vera for editing, color and motion work.",
 };
 
-const socials = [
-  { label: "Instagram", href: "https://instagram.com/" },
-  { label: "YouTube", href: "https://youtube.com/" },
-  { label: "Vimeo", href: "https://vimeo.com/" },
-  { label: "LinkedIn", href: "https://linkedin.com/" },
-];
+const socials = content.contact.socials;
 
 export default function ContactPage() {
   return (
@@ -25,8 +21,7 @@ export default function ContactPage() {
           Let&apos;s talk<span className="text-accent">.</span>
         </h1>
         <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted">
-          Booking edits, grades and full post-production. Tell me about the
-          project, the deadline, and what the footage looks like.
+          {content.contact.intro}
         </p>
       </div>
 
@@ -41,10 +36,10 @@ export default function ContactPage() {
               Email
             </h2>
             <a
-              href="mailto:devera.roby2304@gmail.com"
+              href={`mailto:${content.contact.email}`}
               className="mt-3 inline-block font-display text-xl font-bold break-all transition-colors hover:text-accent md:text-2xl"
             >
-              devera.roby2304@gmail.com
+              {content.contact.email}
             </a>
           </div>
           <div>

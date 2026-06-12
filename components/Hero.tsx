@@ -6,6 +6,8 @@ import { useRef, useSyncExternalStore } from "react";
 import { gsap, useGSAP, MOTION_OK } from "@/lib/gsap";
 import { usePrefersReducedMotion } from "@/lib/usePrefersReducedMotion";
 import ViewfinderOverlay from "@/components/editor/ViewfinderOverlay";
+import AccentText from "@/components/AccentText";
+import { content } from "@/lib/content";
 
 const HeroCanvas = dynamic(() => import("@/components/webgl/HeroCanvas"), {
   ssr: false,
@@ -85,7 +87,7 @@ export default function Hero() {
           data-hero-meta
           className="mb-6 translate-y-4 text-sm uppercase tracking-[0.3em] text-muted opacity-0"
         >
-          Video Editor — Manila / Remote
+          {content.hero.kicker}
         </p>
 
         <h1 className="font-display text-[13vw] font-extrabold leading-[0.95] tracking-tight md:text-8xl lg:text-9xl">
@@ -104,8 +106,7 @@ export default function Hero() {
             data-hero-meta
             className="max-w-md translate-y-4 text-lg leading-relaxed text-muted opacity-0"
           >
-            Cutting films, campaigns and music videos with rhythm, restraint
-            and an obsession for the frame that matters.
+            <AccentText text={content.hero.tagline} />
           </p>
           <div
             data-hero-meta
