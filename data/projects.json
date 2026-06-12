@@ -1,19 +1,18 @@
 [
   {
-    "id": "weaboo",
-    "title": "WOWIE",
+    "id": "tamaraw-toyota",
+    "title": "Racing A Toyota Tamaraw, And Why Toyota Is A Cultural Brand In The Philippines (Culture Trip Ep. 1)",
     "year": "2025",
-    "client": "fdsfd",
-    "videoUrl": "https://www.youtube.com/watch?v=bBUERgh-PH8",
+    "client": "Go Flat Out Ph",
+    "thumbnail": "/thumbs/project-01.svg",
+    "videoUrl": "https://www.youtube.com/watch?v=VClFe9ljye4&t=344s",
     "type": "youtube",
-    "duration": "01:24",
-    "role": "dsfsfsfsdfsd",
+    "duration": "22:09",
+    "role": "Lead Editor & Colorist",
     "tools": [
-      "Premiere Pro",
-      "DaVinci Resolve",
-      "After Effects"
+      "DaVinci Resolve"
     ],
-    "description": "A nocturnal brand film cut to a half-time beat — neon storefronts, rain-slick streets and 120fps inserts. Edited for rhythm first: every cut lands on or deliberately around the downbeat.",
+    "description": "",
     "featured": true
   },
   {
