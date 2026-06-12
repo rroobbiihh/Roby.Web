@@ -1,65 +1,55 @@
-import Image from "next/image";
+import Link from "next/link";
+import Hero from "@/components/Hero";
+import ProjectGrid from "@/components/ProjectGrid";
+import Capabilities from "@/components/Capabilities";
+import { featuredProjects } from "@/data/projects";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <>
+      <Hero />
+
+      <section className="mx-auto max-w-6xl px-6 py-24 md:py-36">
+        <div className="mb-14 flex items-end justify-between gap-6 md:mb-20">
+          <h2 className="font-display text-4xl font-bold tracking-tight md:text-6xl">
+            Selected Work<span className="text-accent">.</span>
+          </h2>
+          <Link
+            href="/portfolio"
+            className="shrink-0 text-sm uppercase tracking-widest text-muted underline-offset-8 transition-colors hover:text-accent hover:underline"
+          >
+            All work →
+          </Link>
+        </div>
+        <ProjectGrid projects={featuredProjects} />
+      </section>
+
+      <section className="border-t border-line">
+        <div className="mx-auto max-w-6xl px-6 py-24 md:py-36">
+          <h2 className="mb-14 font-display text-4xl font-bold tracking-tight md:mb-20 md:text-6xl">
+            What I do<span className="text-accent">.</span>
+          </h2>
+          <Capabilities />
+        </div>
+      </section>
+
+      <section className="border-t border-line">
+        <div className="mx-auto max-w-6xl px-6 py-24 text-center md:py-36">
+          <p className="text-sm uppercase tracking-[0.3em] text-muted">
+            Currently booking
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+          <h2 className="mx-auto mt-6 max-w-3xl font-display text-4xl font-bold leading-tight tracking-tight md:text-6xl">
+            Have a story that needs cutting
+            <span className="text-accent">?</span>
+          </h2>
+          <Link
+            href="/contact"
+            className="mt-10 inline-block border border-line px-10 py-4 text-sm uppercase tracking-widest transition-colors hover:border-accent hover:text-accent"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            Start a project
+          </Link>
         </div>
-      </main>
-    </div>
+      </section>
+    </>
   );
 }
