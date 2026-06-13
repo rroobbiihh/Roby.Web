@@ -36,8 +36,8 @@ export default function Footer() {
           </ul>
           <p className="text-xs text-muted">
             © {new Date().getFullYear()} Roby De Vera ·{" "}
-            <Link href="/" className="transition-colors hover:text-accent">
-              robydevera.com
+            <Link href="https://roby-website.vercel.app/" className="transition-colors hover:text-accent">
+              roby-website.vercel.app
             </Link>
           </p>
         </div>

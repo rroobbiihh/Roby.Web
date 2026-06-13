@@ -72,7 +72,6 @@ export default function ScrollPlayhead() {
   // Position flags: on the home page at each section's real scroll fraction
   // (like markers at their timecodes); elsewhere, spaced evenly.
   useEffect(() => {
-    const clamp = (v: number) => Math.min(Math.max(v, 0.06), 0.94);
     const place = () => {
       const max = document.documentElement.scrollHeight - window.innerHeight;
       FLAGS.forEach((flag, i) => {
@@ -84,10 +83,22 @@ export default function ScrollPlayhead() {
             fraction = 1;
           } else {
             const section = document.getElementById(flag.id);
-            if (section) fraction = section.offsetTop / max;
+            if (section) {
+              // Match where scrollIntoView actually rests: the section's
+              // document top minus its scroll-margin-top. Using the same
+              // scrollY basis as the playhead keeps the two in lockstep.
+              const scrollMarginTop = parseFloat(
+                getComputedStyle(section).scrollMarginTop
+              ) || 0;
+              const top =
+                section.getBoundingClientRect().top +
+                window.scrollY -
+                scrollMarginTop;
+              fraction = Math.min(Math.max(top / max, 0), 1);
+            }
           }
         }
-        el.style.left = `${clamp(fraction) * 100}%`;
+        el.style.left = `${fraction * 100}%`;
       });
     };
     place();

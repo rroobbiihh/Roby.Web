@@ -23,8 +23,8 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://robydevera.com";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Roby De Vera — Video Editor",
-    template: "%s — Roby De Vera",
+    default: "Roby De Vera",
+    template: "Roby De Vera • %s",
   },
   description:
     "Roby De Vera is a video editor crafting rhythm, story and motion for brands, artists and filmmakers.",
@@ -32,13 +32,13 @@ export const metadata: Metadata = {
     type: "website",
     url: siteUrl,
     siteName: "Roby De Vera",
-    title: "Roby De Vera — Video Editor",
+    title: "Roby De Vera",
     description:
       "Video editor crafting rhythm, story and motion for brands, artists and filmmakers.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Roby De Vera — Video Editor",
+    title: "Roby De Vera",
     description:
       "Video editor crafting rhythm, story and motion for brands, artists and filmmakers.",
   },
