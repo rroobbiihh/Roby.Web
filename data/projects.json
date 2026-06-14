@@ -27,8 +27,7 @@
       "DaVinci Resolve"
     ],
     "description": "A 12-minute documentary short following a third-generation smokehouse. Built from 14 hours of vérité footage — the edit leans on long takes and ambient sound beds to let the place breathe.",
-    "featured": true,
-    "thumbnail": "/thumbs/ninepot-ad.png"
+    "featured": true
   },
   {
     "id": "carlos-z",
@@ -43,7 +42,8 @@
       "DaVinci Resolve"
     ],
     "description": "Music video cut around a single continuous dolly move, intercut with 8mm scans. Speed-ramped transitions hide the seams; grain and gate-weave matched in After Effects.",
-    "featured": true
+    "featured": true,
+    "thumbnail": "/thumbs/carlos-z.png"
   },
   {
     "id": "zenki",
