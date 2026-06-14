@@ -16,6 +16,116 @@ const smallBtnCls =
   "border border-line px-2 py-1 text-[10px] uppercase tracking-widest transition-colors hover:border-accent hover:text-accent disabled:opacity-30";
 
 type Status = "idle" | "saving" | "saved" | "error";
+type ThumbStatus = "idle" | "uploading" | "done" | "error";
+
+function ThumbDropZone({
+  projectId,
+  currentThumb,
+  onUploaded,
+}: {
+  projectId: string;
+  currentThumb?: string;
+  onUploaded: (path: string) => void;
+}) {
+  const [status, setThumbStatus] = useState<ThumbStatus>("idle");
+  const [msg, setMsg] = useState("");
+  const [dragging, setDragging] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  async function upload(file: File) {
+    if (!file.type.startsWith("image/")) {
+      setThumbStatus("error");
+      setMsg("Pick an image file.");
+      return;
+    }
+    setThumbStatus("uploading");
+    setMsg("");
+    try {
+      const fd = new FormData();
+      fd.append("file", file);
+      fd.append("slug", projectId);
+      const res = await fetch("/api/studio/upload/thumbnail", {
+        method: "POST",
+        body: fd,
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error ?? `HTTP ${res.status}`);
+      setThumbStatus("done");
+      onUploaded(data.path);
+    } catch (err) {
+      setThumbStatus("error");
+      setMsg(err instanceof Error ? err.message : "Upload failed");
+    }
+  }
+
+  const localThumb = currentThumb?.startsWith("/") ? currentThumb : undefined;
+
+  return (
+    <div className="flex flex-col gap-2">
+      <span className={labelCls}>Static thumbnail — drag &amp; drop or click</span>
+      <div
+        role="button"
+        tabIndex={0}
+        aria-label="Upload thumbnail"
+        className={`relative flex min-h-28 cursor-pointer flex-col items-center justify-center overflow-hidden border border-dashed p-4 transition-colors ${
+          dragging
+            ? "border-accent bg-surface/60"
+            : "border-line hover:border-accent/50"
+        }`}
+        onClick={() => inputRef.current?.click()}
+        onKeyDown={(e) => e.key === "Enter" && inputRef.current?.click()}
+        onDragOver={(e) => {
+          e.preventDefault();
+          setDragging(true);
+        }}
+        onDragLeave={() => setDragging(false)}
+        onDrop={(e) => {
+          e.preventDefault();
+          setDragging(false);
+          const file = e.dataTransfer.files[0];
+          if (file) upload(file);
+        }}
+      >
+        {localThumb && (
+          <img
+            src={localThumb}
+            alt="Current thumbnail"
+            className="absolute inset-0 h-full w-full object-cover opacity-25"
+          />
+        )}
+        <div className="relative z-10 flex flex-col items-center gap-1 text-center pointer-events-none">
+          {status === "uploading" ? (
+            <span className="text-xs text-muted">Uploading…</span>
+          ) : (
+            <>
+              <span className="text-[10px] uppercase tracking-widest text-muted">
+                {localThumb ? "Drop to replace" : "Drop image here"}
+              </span>
+              <span className="text-[10px] text-muted/60">JPEG · PNG · WebP · max 8MB</span>
+            </>
+          )}
+          {status === "done" && (
+            <span className="mt-1 text-xs text-accent">Uploaded ✓ — saved to /thumbs/{projectId}.*</span>
+          )}
+          {status === "error" && (
+            <span className="mt-1 text-xs text-accent">{msg}</span>
+          )}
+        </div>
+        <input
+          ref={inputRef}
+          type="file"
+          accept="image/jpeg,image/png,image/webp"
+          className="hidden"
+          onChange={(e) => {
+            const file = e.target.files?.[0];
+            if (file) upload(file);
+            e.target.value = "";
+          }}
+        />
+      </div>
+    </div>
+  );
+}
 
 function download(filename: string, data: unknown) {
   const blob = new Blob([JSON.stringify(data, null, 2) + "\n"], {
@@ -612,6 +722,11 @@ export default function StudioEditor({
                   </span>
                 </summary>
                 <div className="flex flex-col gap-4 border-t border-line p-4">
+                  <ThumbDropZone
+                    projectId={p.id}
+                    currentThumb={p.thumbnail}
+                    onUploaded={(path) => patchProject(i, { thumbnail: path })}
+                  />
                   <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                     <Field
                       label="URL slug (lowercase-with-hyphens)"
